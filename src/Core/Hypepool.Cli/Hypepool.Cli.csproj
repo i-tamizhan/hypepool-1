@@ -36,6 +36,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="YamlDotNet" Version="4.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Blockchains\Monero\Monero.csproj" />
     <ProjectReference Include="..\Hypepool.Core\Hypepool.Core.csproj" />
   </ItemGroup>

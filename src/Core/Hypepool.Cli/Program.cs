@@ -24,21 +24,24 @@
 //      SOFTWARE.
 #endregion
 
-using System;
-using System.Reflection;
-using System.Runtime.InteropServices;
 using Hypepool.Cli.Utils.Extensions;
 using Hypepool.Cli.Utils.Runtime;
 using Hypepool.Core.Internals.Bootstrap;
 using Hypepool.Core.Internals.Factories.Core;
 using Serilog;
 using Stashbox;
+using System;
+using System.IO;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using YamlDotNet.Serialization;
 
 namespace Hypepool.Cli
 {
     public class Program
     {
         private static ILogger _logger;
+        private static Settings _settings;
 
         public static void Main(string[] args)
         {
@@ -46,6 +49,12 @@ namespace Hypepool.Cli
 
             ConsoleExtensions.PrintBanner(); // print banner.
             ConsoleExtensions.PrintLicense(); // print license.
+
+            using (var reader = File.OpenText("Settings.yaml"))
+            {
+                var deserializer = new Deserializer();
+                _settings = (Settings)deserializer.Deserialize(reader, typeof(Settings));
+            }
 
             var bootstrapper = new Bootstrapper(); // IoC kernel bootstrapper.
             bootstrapper.Run(); // run bootstrapper.
@@ -82,7 +91,7 @@ namespace Hypepool.Cli
                 throw new ArgumentNullException(nameof(e));
             }
 
-            if(!e.IsTerminating)
+            if (!e.IsTerminating)
                 _logger.Fatal(exception, $"terminating because of unhandled exception: {exception.Message}");
             else
             {

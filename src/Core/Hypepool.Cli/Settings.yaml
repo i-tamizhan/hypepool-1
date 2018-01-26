@@ -1,0 +1,15 @@
+﻿#main settings
+LogPath: ''
+ApiPort: 3330
+
+#coin deamons
+Daemons:
+ - Name: 'monero'
+   Address: '0.0.0.0'
+   Port: 3333
+ - Name: 'litecoin'
+   Address: '0.0.0.0'
+   Port: 3334
+ - Name: 'ethereum'
+   Address: '0.0.0.0'
+   Port: 3335
