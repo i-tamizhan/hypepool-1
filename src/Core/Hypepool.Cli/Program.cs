@@ -41,6 +41,7 @@ namespace Hypepool.Cli
     public class Program
     {
         private static ILogger _logger;
+        //todo: make interface and figure out what else we need to have in settings
         private static Settings _settings;
 
         public static void Main(string[] args)
@@ -50,7 +51,8 @@ namespace Hypepool.Cli
             ConsoleExtensions.PrintBanner(); // print banner.
             ConsoleExtensions.PrintLicense(); // print license.
 
-            using (var reader = File.OpenText("Settings.yaml"))
+            //todo: improve reading the config file
+            using (var reader = File.OpenText("Settings.yml"))
             {
                 var deserializer = new Deserializer();
                 _settings = (Settings)deserializer.Deserialize(reader, typeof(Settings));

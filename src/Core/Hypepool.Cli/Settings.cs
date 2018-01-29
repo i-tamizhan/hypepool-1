@@ -2,11 +2,11 @@
 
 namespace Hypepool.Cli
 {
+    //todo: this is an example of reading yaml config. Make interface and proper Settings properties
     public class Settings
     {
         public Settings()
         {
-
         }
 
         public string LogPath { get; set; }
