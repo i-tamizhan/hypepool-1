@@ -36,16 +36,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="YamlDotNet" Version="4.2.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Blockchains\Monero\Monero.csproj" />
     <PackageReference Include="xunit.analyzers" Version="0.8.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Blockchains\Monero\Hypepool.Monero.csproj" />
+    <PackageReference Include="YamlDotNet" Version="4.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Hypepool.Core\Hypepool.Core.csproj" />
   </ItemGroup>
 
